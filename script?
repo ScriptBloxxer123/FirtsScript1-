@@ -1,0 +1,166 @@
+	local local_player = game:GetService("Players").LocalPlayer
+
+	local function is_baller( )
+		return true -- SNIPPED DUE TO PRIVACY REASONS...
+	end
+
+	local char = local_player.Character or local_player.CharacterAdded:Wait();
+
+	local KillAura = Combat:AddToggle("KillAura",{Text = 'KillAura',Default = false}):AddKeyPicker('KillAura', { Text = 'KillAura', Default = 'R' });
+
+	local AutoEscape = Combat:AddToggle("AutoEscape",{Text = 'Auto Escape',Default = false})
+
+
+	local NoLasers = Map:AddToggle("NoLasers",{Text = 'Remove Lasers',Default = false}):OnChanged(function()
+		state = Toggles.NoLasers.Value
+		if state then 
+			for _,Part in next, workspace:GetDescendants() do 
+				if Part:IsA("BasePart") or Part:IsA("UnionOperation") then
+					if Part.BrickColor == BrickColor.new("Really red") and Part.Material == Enum.Material.Neon then
+						Part.Parent = Laser_BackUp
+					end
+
+				end
+
+			end
+
+		else
+
+			for _,_Part in next, Laser_BackUp:GetChildren() do 
+				_Part.Parent = workspace
+			end
+
+
+		end
+
+
+	end)
+
+
+	local NoBadWords = Map:AddToggle("NoBadWords",{Text = 'Remove puddles',Default = false}):OnChanged(function()
+		state = Toggles.NoBadWords.Value
+		if state then 
+			for i,v in next, game:GetService("Workspace").TransfurPart:GetChildren() do 
+				v.Parent = Puddle_Backup
+			end
+		else
+			for i,v in next, Puddle_Backup:GetChildren() do 
+				v.Parent = game:GetService("Workspace").TransfurPart
+			end
+
+		end
+
+	end)
+
+	local function auto_escape( )
+		if not Toggles.AutoEscape.Value then return end
+		if local_player:FindFirstChild( "PlayerGui" ):FindFirstChild( "EscapeGui" ) then
+			task.defer( keypress , 0x20 )
+			wait( )
+			task.defer( keyrelease , 0x20 )
+		end
+	end
+
+	local function killaura( )
+
+		for _,player in next, game:GetService("Players"):GetPlayers( ) do 
+			if not Options.KillAura.Toggled then  continue end
+			if not local_player.Character then continue end 
+			if not player.Character then continue end 
+			if not local_player.Character:FindFirstChildOfClass("Tool") then continue end 
+			if not local_player.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Remote") then  continue end 
+			if not local_player.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Remote"):FindFirstChild("Hit") then continue end 
+			if not local_player.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handler") then continue end 
+			if player.Team == local_player.Team then continue end 
+			if player == local_player then continue end 
+
+			local distance_between = (local_player.Character:FindFirstChild("Torso").Position - player.Character:FindFirstChild("Torso").Position).Magnitude
+			if distance_between <= 20 then
+				local_player.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Remote"):FindFirstChild("Hit"):FireServer(player.Character:FindFirstChild("Torso"),player.Character:FindFirstChild("Humanoid"),player.Character:FindFirstChild("Torso").Position or Vector3.new())
+			end
+
+		end
+
+	end
+
+	pcall(function() game:GetService("RunService"):UnbindFromRenderStep("killaurahax") end)
+	game:GetService("RunService"):BindToRenderStep( "killaurahax" , 200 , killaura ); -- Camera Controls: 200
+
+	pcall(function() game:GetService("RunService"):UnbindFromRenderStep("escapehax") end)
+	game:GetService("RunService"):BindToRenderStep( "escapehax" , 200 , auto_escape ); -- Camera Controls: 200
+
+
+	Misc:AddToggle('Keybinds', { Text = 'Show Keybinds Menu', Default = true }):OnChanged(function()
+		Library.KeybindFrame.Visible = Toggles.Keybinds.Value;
+	end);
+
+
+	local a186568 = (function() return string.reverse("6931#yggorf yb edam tpircs") end)()
+
+	Library:Notify('Loaded - Press right shift to open UI.');
+	Library:Notify(a186568);
+
+end)
+
+Two.Archivable = false
+Two.Name = "Two"
+Two.Parent = Frame
+Two.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Two.BackgroundTransparency = 0.650
+Two.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Two.BorderSizePixel = 0
+Two.Position = UDim2.new(0, 0, 0.284768224, 0)
+Two.Size = UDim2.new(0, 241, 0, 32)
+Two.Font = Enum.Font.SourceSans
+Two.Text = "IY"
+Two.TextColor3 = Color3.fromRGB(0, 0, 0)
+Two.TextSize = 14.000
+Two.MouseButton1Down:Connect(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+end)
+
+Three.Name = "Three"
+Three.Parent = Frame
+Three.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Three.BackgroundTransparency = 0.650
+Three.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Three.BorderSizePixel = 0
+Three.Position = UDim2.new(0, 0, 0.390728474, 0)
+Three.Size = UDim2.new(0, 241, 0, 32)
+Three.Font = Enum.Font.SourceSans
+Three.Text = "FE animations"
+Three.TextColor3 = Color3.fromRGB(0, 0, 0)
+Three.TextSize = 14.000
+Three.MouseButton1Down:Connect(function()
+	loadstring(game:HttpGet(('https://pastebin.com/raw/1p6xnBNf'),true))()
+end)
+
+Four.Name = "Four"
+Four.Parent = Frame
+Four.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Four.BackgroundTransparency = 0.650
+Four.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Four.BorderSizePixel = 0
+Four.Position = UDim2.new(0, 0, 0.496688753, 0)
+Four.Size = UDim2.new(0, 241, 0, 32)
+Four.Font = Enum.Font.SourceSans
+Four.Text = "Fling all"
+Four.TextColor3 = Color3.fromRGB(0, 0, 0)
+Four.TextSize = 14.000
+Four.MouseButton1Down:Connect(function()
+	loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
+end)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Size = UDim2.new(0, 241, 0, 35)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "AntiFurry Hub"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
