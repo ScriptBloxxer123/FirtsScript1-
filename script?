@@ -1,3 +1,82 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local First = Instance.new("TextButton")
+local Two = Instance.new("TextButton")
+local Three = Instance.new("TextButton")
+local Four = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(108, 108, 108)
+Frame.BackgroundTransparency = 0.400
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.Position = UDim2.new(0.539305329, 0, 0.206840396, 0)
+Frame.Size = UDim2.new(0, 241, 0, 302)
+Frame.Active = true
+
+First.Name = "First"
+First.Parent = Frame
+First.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+First.BackgroundTransparency = 0.650
+First.BorderColor3 = Color3.fromRGB(0, 0, 0)
+First.BorderSizePixel = 0
+First.Position = UDim2.new(0, 0, 0.178807944, 0)
+First.Size = UDim2.new(0, 241, 0, 32)
+First.Font = Enum.Font.SourceSans
+First.Text = "Kill aura and more"
+First.TextColor3 = Color3.fromRGB(0, 0, 0)
+First.TextSize = 14.000
+First.MouseButton1Down:Connect(function()
+	---@diagnostic disable: unused-local, undefined-global, unused-function, empty-block
+
+
+--[[
+    Credits : froggysfriend - making like the entire fucking script    
+--]]
+
+
+--[[
+headhook™ is a registered trademark of Ballin’ Technologies LLC
+headhook™ is licensed under a simple "you cant sell, you cant edit, you cannot use this code in any project that is not given explicit permission by Ballin’ Technologies LLC Chief operations officer and or the CEO.
+--]]
+
+	-- stuff that is commented is from my private script lol!!!
+
+	local shared = getrenv( ).shared 
+
+	local a197158 = (function() return string.reverse("6931#yggorf yb edam - noitcefni eht yrruF") end)()
+	local a147513 = (function() return string.reverse("aul.0.202%yrarbiL02%IU/niam/biLaironiL/dneirfsiggorf/moc.tnetnocresubuhtig.war//:sptth") end)()
+
+	local ui_src = game:HttpGetAsync(a147513);
+	local Library = loadstring( ui_src )( );
+	local Window = Library:CreateWindow( a197158 );
+
+	-- Create tabs.
+	local _Rage = Window:AddTab( 'Game' );
+	local _Misc = Window:AddTab( 'Misc' );
+
+	-- Create Tab Boxes.
+	local lMisc1 = _Misc:AddLeftTabbox();
+	local lRage1 = _Rage:AddLeftTabbox();
+
+
+	local Puddle_Backup = Instance.new('Folder',game:GetService("Lighting"))
+	local Laser_BackUp = Instance.new('Folder',game:GetService("Lighting"))
+
+	local Combat = lRage1:AddTab('Combat')
+	local Misc = lMisc1:AddTab('Misc')
+	local Map = lRage1:AddTab('Map')
+
 	local local_player = game:GetService("Players").LocalPlayer
 
 	local function is_baller( )
